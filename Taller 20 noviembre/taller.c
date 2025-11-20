@@ -1,41 +1,21 @@
-/*
-  Taller: Árbol Binario de Búsqueda (ABB)
-  Sistema de Gestión de Tiquetes para el Muelle Turístico
-
-  Este archivo contiene el código paso a paso (comentado en español)
-  que implementa un ABB para gestionar pasajeros usando el número
-  de documento como clave.
-
-  Requisitos implementados:
-  - Estructura Pasajero (documento, destino, tipo_pasaje)
-  - Inserción (ignora duplicados)
-  - Recorridos: Inorden, Preorden, Postorden
-  - Conteo de nodos
-  - Eliminación por documento
-  - Menú interactivo
-*/
 
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
 
-/* ----------------------
-   Paso 1: Definiciones
-   ---------------------- */
 #define DEST_COUNT 4
 #define DEST_MAX_LEN 32
 
-/* Lista de destinos permitidos */
 const char *destinos[DEST_COUNT] = {"Timbiquí", "Juanchaco", "Tumaco", "Guapi"};
 
-/* Estructura Pasajero: representa la información almacenada en cada nodo */
+
 typedef struct Pasajero {
-	int documento;               /* clave de búsqueda */
-	char destino[DEST_MAX_LEN];  /* nombre del destino */
-	int tipo_pasaje;             /* 1 = Ida, 2 = Ida y Regreso */
+	int documento;               
+	char destino[DEST_MAX_LEN];  
+	int tipo_pasaje;             
 } Pasajero;
 
-/* Nodo del ABB */
+//Nodo del ABB
 typedef struct Node {
 	Pasajero info;
 	struct Node *left;
@@ -43,11 +23,7 @@ typedef struct Node {
 } Node;
 
 
-/* ----------------------
-   Paso 2: Utilidades básicas
-   ---------------------- */
-
-/* Crear un nuevo nodo a partir de un Pasajero */
+//Crear un nuevo nodo a partir de un Pasajero
 Node *create_node(Pasajero p) {
 	Node *n = (Node *)malloc(sizeof(Node));
 	if (!n) {
@@ -58,13 +34,7 @@ Node *create_node(Pasajero p) {
 	n->left = n->right = NULL;
 	return n;
 }
-
-
-/* ----------------------
-   Paso 3: Inserción en ABB
-   - Inserta por documento
-   - Si documento ya existe, se ignora (no se inserta)
-   ---------------------- */
+//Insertar un nodo en el ABB
 
 int insert_node(Node **root, Pasajero p) {
 	if (*root == NULL) {
@@ -80,11 +50,7 @@ int insert_node(Node **root, Pasajero p) {
 		return 0; /* no insertado */
 	}
 }
-
-
-/* ----------------------
-   Paso 4: Mostrar pasajero (formato legible)
-   ---------------------- */
+//Mostrar pasajero (formato legible)
 
 void print_pasajero(const Pasajero *p) {
 	printf("Documento: %d | Destino: %s | Tipo: %s\n",
@@ -94,10 +60,7 @@ void print_pasajero(const Pasajero *p) {
 }
 
 
-/* ----------------------
-   Paso 5: Recorridos (inorden, preorden, postorden)
-   - Inorden: orden ascendente por documento
-   ---------------------- */
+    //Recorridos (inorden, preorden, postorden)
 
 void inorder(Node *root) {
 	if (!root) return;
@@ -120,10 +83,7 @@ void postorder(Node *root) {
 	print_pasajero(&root->info);
 }
 
-
-/* ----------------------
-   Paso 6: Conteo de nodos
-   ---------------------- */
+//Conteo de nodos
 
 int count_nodes(Node *root) {
 	if (!root) return 0;
@@ -131,11 +91,7 @@ int count_nodes(Node *root) {
 }
 
 
-/* ----------------------
-   Paso 7: Eliminación de un nodo por documento
-   - Casos: hoja, un hijo, dos hijos
-   - En el caso de dos hijos, se usa el sucesor mínimo del subárbol derecho
-   ---------------------- */
+//Eliminación de un nodo por documento
 
 Node *find_min(Node *root) {
 	if (!root) return NULL;
@@ -173,9 +129,7 @@ Node *delete_node(Node *root, int documento, int *deleted) {
 }
 
 
-/* ----------------------
-   Paso 8: Liberar memoria del árbol
-   ---------------------- */
+//Liberar memoria del árbol
 
 void free_tree(Node *root) {
 	if (!root) return;
@@ -185,10 +139,7 @@ void free_tree(Node *root) {
 }
 
 
-/* ----------------------
-   Paso 9: Helpers de entrada (seleccionar destino y tipo)
-   - Para simplificar se muestra un menú con destinos predefinidos
-   ---------------------- */
+//helpers de entrada (seleccionar destino y tipo)
 
 int seleccionar_destino(char *out_dest) {
 	int opt = 0;
@@ -219,17 +170,13 @@ int seleccionar_tipo() {
 }
 
 
-/* ----------------------
-   Paso 10: Menú interactivo
-   - Ofrece las operaciones solicitadas
-   ---------------------- */
-
+//menú interactivo
 int main(void) {
 	Node *root = NULL;
 	int running = 1;
 
 	while (running) {
-		printf("\n--- Sistema de Tiquetes - ABB ---\n");
+		printf("\n Sistema de Tiquetes (ABB) \n");
 		printf("1) Registrar pasajero\n");
 		printf("2) Eliminar pasajero por documento\n");
 		printf("3) Listar Inorden\n");

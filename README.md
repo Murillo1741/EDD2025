@@ -14,28 +14,11 @@ Resumen de la implementación
   - Eliminar pasajero por `documento` (maneja 0/1/2 hijos).
   - Menú interactivo para ejecutar las acciones.
 
-Archivo principal
-- `Taller 20 noviembre/taller.c`: implementación paso a paso con comentarios en español.
-
-Cómo compilar (Windows PowerShell)
-```powershell
-gcc "Taller 20 noviembre\taller.c" -o taller.exe
-```
-
-Cómo ejecutar
-```powershell
-.\taller.exe
-```
-
-Pruebas rápidas sugeridas
+Pruebas rápidas sugeridas (si desea)
 - Insertar documentos: 100, 50, 150. Hacer `Listar Inorden` debe mostrar 50, 100, 150.
 - Eliminar el documento 100 y listar de nuevo para verificar la eliminación.
 
-Mejoras posibles
-- Añadir búsqueda por documento (`search`) para consultar un pasajero concreto.
-- Guardar y cargar datos desde un archivo (CSV) para persistencia.
-- Usar `fgets` + `sscanf` para lecturas más robustas en lugar de `scanf`.
-- Implementar un árbol balanceado (AVL o Red-Black) si se esperan muchos registros.
 
-Contacto
-- Si quieres que añada la función de búsqueda, persistencia o que reemplace `taller.c` por otra versión, dime cuál y lo implemento.
+Estudiante: Diver Andrés Murillo Valencia
+Estructura de datos
+Universidad del Pacífico
