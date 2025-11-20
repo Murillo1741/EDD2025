@@ -1,23 +1,41 @@
-# Actividad 3 - Gestión de Pasajeros para Aerolínea
+# Taller: Sistema de Tiquetes (ABB)
 
-Este proyecto simula el registro de pasajeros para una aerolínea usando estructuras de datos en C.  
-Permite registrar pasajeros, mostrar la lista y controla el overbooking (venta de hasta un 10% más de tiquetes que la capacidad del avión).
+Este repositorio contiene un programa en C que implementa un Árbol Binario de Búsqueda (ABB)
+para gestionar la venta y reserva de tiquetes en un muelle turístico. El árbol usa el número de
+documento del viajero como clave de indexación.
 
-## Requisitos
+Resumen de la implementación
+- Estructura `Pasajero`: contiene `documento` (clave), `destino` (cadena) y `tipo_pasaje` (1 = Ida, 2 = Ida y Regreso).
+- Árbol Binario de Búsqueda (`Node`) para almacenar los pasajeros.
+- Operaciones implementadas:
+  - Insertar pasajero (ignora duplicados por `documento`).
+  - Recorridos: Inorden, Preorden y Postorden.
+  - Contar pasajeros.
+  - Eliminar pasajero por `documento` (maneja 0/1/2 hijos).
+  - Menú interactivo para ejecutar las acciones.
 
-- Lenguaje: C
-- Solo se usa la librería estándar `stdio.h`
-- El código fuente está en el archivo `taller.c`
+Archivo principal
+- `Taller 20 noviembre/taller.c`: implementación paso a paso con comentarios en español.
 
-## ¿Cómo funciona?
+Cómo compilar (Windows PowerShell)
+```powershell
+gcc "Taller 20 noviembre\taller.c" -o taller.exe
+```
 
-1. Al iniciar, el programa solicita la capacidad máxima de asientos del avión.
-2. Calcula el máximo de tiquetes que se pueden vender (capacidad + 10%).
-3. Permite registrar pasajeros (tipo de documento y primer apellido).
-4. Muestra la lista de pasajeros registrados.
-5. El primero en ser registrado es el primero en abordar.
+Cómo ejecutar
+```powershell
+.\taller.exe
+```
 
-- Diver Andrés Murillo Valencia
-- Curso: Estructuras de Datos 2025
+Pruebas rápidas sugeridas
+- Insertar documentos: 100, 50, 150. Hacer `Listar Inorden` debe mostrar 50, 100, 150.
+- Eliminar el documento 100 y listar de nuevo para verificar la eliminación.
 
-# ¡Gracias por su atención!
+Mejoras posibles
+- Añadir búsqueda por documento (`search`) para consultar un pasajero concreto.
+- Guardar y cargar datos desde un archivo (CSV) para persistencia.
+- Usar `fgets` + `sscanf` para lecturas más robustas en lugar de `scanf`.
+- Implementar un árbol balanceado (AVL o Red-Black) si se esperan muchos registros.
+
+Contacto
+- Si quieres que añada la función de búsqueda, persistencia o que reemplace `taller.c` por otra versión, dime cuál y lo implemento.
